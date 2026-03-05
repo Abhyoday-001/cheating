@@ -55,14 +55,24 @@ export function HeroSection() {
             ))}
           </span>
           <br />
-          {/* "ENTERTAINMENT" - drops down from above */}
+          {/* "ENTERTAINMENT" - drops down from height and bounces before landing */}
           <motion.span
-            initial={{ opacity: 0, y: -120, scale: 1.1 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: -300 }}
+            animate={{
+              opacity: [0, 1, 1, 1, 1, 1],
+              y: [-300, 0, -60, 0, -20, 0],
+            }}
             transition={{
-              duration: 0.9,
+              duration: 1.6,
               delay: 1.4,
-              ease: [0.22, 1, 0.36, 1],
+              times: [0, 0.35, 0.55, 0.7, 0.85, 1],
+              ease: [
+                [0.22, 1, 0.36, 1],
+                [0.22, 1, 0.36, 1],
+                [0.22, 1, 0.36, 1],
+                [0.22, 1, 0.36, 1],
+                [0.22, 1, 0.36, 1],
+              ],
             }}
             className="gradient-text inline-block"
           >
@@ -73,7 +83,7 @@ export function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.0 }}
+          transition={{ duration: 0.8, delay: 2.6 }}
           className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty md:text-xl"
         >
           Immerse yourself in a next-generation streaming experience. 
@@ -83,7 +93,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.2 }}
+          transition={{ duration: 0.8, delay: 2.8 }}
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <MagneticButton strength={0.2}>
@@ -109,7 +119,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.4 }}
+          transition={{ duration: 0.8, delay: 3.0 }}
           className="mt-16 flex items-center justify-center gap-8 md:gap-16"
         >
           {[
@@ -133,7 +143,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.8 }}
+        transition={{ delay: 3.4 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
