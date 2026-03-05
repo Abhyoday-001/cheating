@@ -34,21 +34,46 @@ export function HeroSection() {
           </span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-6 text-5xl font-bold leading-tight tracking-tight text-balance md:text-7xl lg:text-8xl"
-        >
-          <span className="text-foreground">The Future of</span>
+        <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight text-balance md:text-7xl lg:text-8xl">
+          {/* "THE FUTURE OF" - characters fade in one by one */}
+          <span className="text-foreground inline-block">
+            {"The Future of".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, filter: "blur(8px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.4 + i * 0.06,
+                  ease: "easeOut",
+                }}
+                className="inline-block"
+                style={{ whiteSpace: char === " " ? "pre" : undefined }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </span>
           <br />
-          <span className="gradient-text">Entertainment</span>
-        </motion.h1>
+          {/* "ENTERTAINMENT" - drops down from above */}
+          <motion.span
+            initial={{ opacity: 0, y: -120, scale: 1.1 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 0.9,
+              delay: 1.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="gradient-text inline-block"
+          >
+            Entertainment
+          </motion.span>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 2.0 }}
           className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty md:text-xl"
         >
           Immerse yourself in a next-generation streaming experience. 
@@ -58,7 +83,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 2.2 }}
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <MagneticButton strength={0.2}>
@@ -84,7 +109,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
+          transition={{ duration: 0.8, delay: 2.4 }}
           className="mt-16 flex items-center justify-center gap-8 md:gap-16"
         >
           {[
@@ -108,7 +133,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
+        transition={{ delay: 2.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
